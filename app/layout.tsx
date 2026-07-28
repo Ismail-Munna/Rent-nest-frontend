@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/shared/theme-provider";
 import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
@@ -16,14 +17,21 @@ export default async function RootLayout({
     <html
       lang="en"
       className={cn("h-full antialiased", "font-sans", inter.variable)}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster position="top-right" richColors />
+          {/* Navbar */}
+          {children}
 
-        <Toaster position="top-right" richColors />
-        {/* Navbar */}
-        {children}
-
-        {/* Footer */}
+          {/* Footer */}
+        </ThemeProvider>
       </body>
     </html>
   );
