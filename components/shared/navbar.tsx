@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import { ThemeToggle } from "./theme-toggle";
 
 // Navigation items configuration
 const navItems = [
@@ -83,7 +84,9 @@ export function Navbar({ user }: NavbarProps) {
           </div>
 
           {/* User Dropdown */}
-          {
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            {
             user.success ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -132,6 +135,7 @@ export function Navbar({ user }: NavbarProps) {
               </Button>
             </Link>
           }
+          </div>
         </div>
       </div>
     </nav>
